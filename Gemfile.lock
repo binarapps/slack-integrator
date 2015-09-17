@@ -1,6 +1,7 @@
 GEM
   remote: https://rubygems.org/
   specs:
+    database_cleaner (1.4.1)
     haml (4.0.7)
       tilt
     pg (0.18.3)
@@ -14,6 +15,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  database_cleaner
   haml
   pg
   roda
