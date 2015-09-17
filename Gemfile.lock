@@ -1,0 +1,23 @@
+GEM
+  remote: https://rubygems.org/
+  specs:
+    haml (4.0.7)
+      tilt
+    pg (0.18.3)
+    rack (1.6.4)
+    roda (2.6.0)
+      rack
+    sequel (4.26.0)
+    tilt (2.0.1)
+
+PLATFORMS
+  ruby
+
+DEPENDENCIES
+  haml
+  pg
+  roda
+  sequel
+
+BUNDLED WITH
+   1.10.6
