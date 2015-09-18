@@ -1,5 +1,5 @@
 require "sequel"
 
-DB = Sequel.connect("postgres://#{ENV['PGUSER']}:#{ENV['PGPASSWORD']}@127.0.0.1:5432/roda-app-development")
+DB = Sequel.connect("#{ENV['DATABASE_URL']}")
 
 require './models/reservation.rb'
