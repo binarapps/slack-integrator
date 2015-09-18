@@ -5,3 +5,4 @@ gem "haml"
 gem "pg"
 gem "sequel"
 gem "database_cleaner"
+gem 'factory_girl'
