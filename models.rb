@@ -1,5 +1,6 @@
 require "sequel"
-
-DB = Sequel.connect("#{ENV['DATABASE_URL']}")
+require 'dotenv'
+Dotenv.load
+DB = Sequel.connect(ENV.fetch('DATABASE_URL'))
 
 require './models/reservation.rb'
