@@ -44,7 +44,13 @@ class CreateReservation
   end
 
   def date_already_reserved?
-    false
+    reservations = Reservation.where(reserved_at: @reserved_at)
+    return false if reservations.empty?
+    reservations.each do |reservation|
+      existing_range = reservation.from..reservation.to
+      requested_range = @from..@to
+      return true if existing_range.cover?(requested_range)
+    end
   end
 
   def date_in_past?
