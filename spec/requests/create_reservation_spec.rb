@@ -18,7 +18,7 @@ describe 'Create reservation' do
 
   context 'invalid params' do
     it 'should not create a reservation with blank params' do
-      post 'api/reservations', { }
+      post 'api/reservations', { text: '' }
 
       expect(last_response.status).to eq(400)
       expect(Reservation.count).to eq(0)

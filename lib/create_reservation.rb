@@ -58,7 +58,7 @@ class CreateReservation
   end
 
   def empty_params?
-    @params.nil?
+    @params.empty?
   end
 
 end
