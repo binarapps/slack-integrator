@@ -1,7 +1,7 @@
 require "roda"
 require "byebug"
 require "./models"
-require "./lib/parser"
+require "./lib/create_reservation"
 
 class RodaApp < Roda
   plugin :default_headers,
@@ -24,14 +24,14 @@ class RodaApp < Roda
 
           # POST /api/reservations
           r.post do
-            parser = Parser.new(r.params)
-            parser.execute
+            reservation_create = CreateReservation.new(r.params)
+            reservation_create.create
 
-            if parser.success?
-              parser.reservation
+            if reservation_create.persisted?
+              reservation_create.reservation
             else
               r.response.status = 400
-              parser.errors
+              reservation_create.errors
             end
           end
 
