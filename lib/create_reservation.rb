@@ -26,6 +26,14 @@ class CreateReservation
     @persisted
   end
 
+  def success_message
+    "Reservation made for #{@reserved_at} from: #{@from} - to: #{@to}"
+  end
+
+  def error_message
+    "Sorry, errors occured: #{@errors}"
+  end
+
   private
 
   def filter_params

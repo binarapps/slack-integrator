@@ -28,10 +28,10 @@ class RodaApp < Roda
             reservation_create.create
 
             if reservation_create.persisted?
-              reservation_create.reservation.to_json
+              reservation_create.success_message
             else
               r.response.status = 400
-              reservation_create.errors.to_json
+              reservation_create.error_message
             end
           end
 
