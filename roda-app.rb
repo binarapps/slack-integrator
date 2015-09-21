@@ -1,7 +1,7 @@
 require "roda"
 require "byebug"
 require "./models"
-require "./lib/create_reservation"
+require "./domains/create_reservation"
 
 class RodaApp < Roda
   plugin :default_headers,
