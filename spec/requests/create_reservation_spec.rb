@@ -40,6 +40,7 @@ describe 'Create reservation' do
 
     it 'should not create a reservation when there is already reserved one' do
       Reservation.create(reserved_at: Date.today, from: "#{Time.now.hour}", to: "#{Time.now.hour+1}")
+
       post 'api/reservations', { text: proper_params }
 
       expect(last_response.status).to eq(400)
