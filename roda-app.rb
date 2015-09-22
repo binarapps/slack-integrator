@@ -4,6 +4,7 @@ require 'slackbotsy'
 require 'open-uri'
 require './models'
 require './domains/create_reservation'
+require './domains/post_to_slack'
 require './configurations/slack'
 
 class RodaApp < Roda
@@ -12,9 +13,6 @@ class RodaApp < Roda
 
   plugin :render, engine: 'haml'
   plugin :json, :classes=>[Sequel::Model, Array, Hash]
-
-
-  slack_reservation = Slackbotsy::Bot.new(Slack::CONFIG)
 
   route do |r|
     r.root do
@@ -34,7 +32,7 @@ class RodaApp < Roda
             reservation_create.create
 
             if reservation_create.persisted?
-              slack_reservation.say(reservation_create.success_message)
+              PostToSlack.new(Slack::CONFIG, reservation_create.success_message).say
               r.response.status = 200
             else
               r.response.status = 400
