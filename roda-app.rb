@@ -2,8 +2,9 @@ require "roda"
 require "byebug"
 require 'slackbotsy'
 require 'open-uri'
-require "./models"
-require "./domains/create_reservation"
+require './models'
+require './domains/create_reservation'
+require './configurations/slack'
 
 class RodaApp < Roda
   plugin :default_headers,
@@ -13,14 +14,7 @@ class RodaApp < Roda
   plugin :json, :classes=>[Sequel::Model, Array, Hash]
 
 
-  config = {
-    'channel'          => ENV.fetch('CHANNEL'),
-    'name'             => 'botsy',
-    'incoming_webhook' =>  ENV.fetch('INCOMING_WEBHOOK'),
-    'outgoing_token'   => 'secret'
-  }
-
-  bot = Slackbotsy::Bot.new(config)
+  slack_reservation = Slackbotsy::Bot.new(Slack::CONFIG)
 
   route do |r|
     r.root do
@@ -40,8 +34,8 @@ class RodaApp < Roda
             reservation_create.create
 
             if reservation_create.persisted?
-              bot.say("Success")
-              reservation_create.success_message
+              slack_reservation.say(reservation_create.success_message)
+              r.response.status = 200
             else
               r.response.status = 400
               reservation_create.error_message
