@@ -1,9 +1,8 @@
 require 'spec_helper'
 
 describe 'Create reservation' do
-  let(:proper_params) { "#{Date.today.day}/#{Date.today.month}-#{Time.now.hour}-#{Time.now.hour+1}" }
-  let(:wrong_format_params) { "#{Date.today.day}-#{Date.today.month}:#{Time.now.hour}:#{Time.now.hour+1}" }
-  let(:date_in_past_params) { "#{Date.today.day-1}/#{Date.today.month}-#{Time.now.hour}-#{Time.now.hour+1}" }
+  let(:proper_params) { "#{Date.today.day}/#{Date.today.month}-15:30-16:15" }
+  let(:wrong_format_params) { "#{Date.today.day}-#{Date.today.month}:15:30:16:15" }
 
   context 'proper params' do
 
@@ -12,6 +11,9 @@ describe 'Create reservation' do
 
       expect(last_response.status).to eq(200)
       expect(Reservation.count).to eq(1)
+      reservation = Reservation.last
+      expect(reservation.from).to eq('15:30')
+      expect(reservation.to).to eq('16:15')
     end
 
   end
@@ -31,15 +33,8 @@ describe 'Create reservation' do
       expect(Reservation.count).to eq(0)
     end
 
-    it 'should not create a reservation with date in the past' do
-      post 'api/reservations', { text: date_in_past_params }
-
-      expect(last_response.status).to eq(400)
-      expect(Reservation.count).to eq(0)
-    end
-
     it 'should not create a reservation when there is already reserved one' do
-      Reservation.create(reserved_at: Date.today, from: "#{Time.now.hour}", to: "#{Time.now.hour+1}")
+      Reservation.create(reserved_at: Date.today, from: "15:30", to: "16:30")
 
       post 'api/reservations', { text: proper_params }
 

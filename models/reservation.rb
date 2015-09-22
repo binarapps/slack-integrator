@@ -15,7 +15,6 @@ class Reservation < Sequel::Model
 
   def before_save
     raise DateAlreadyReserved if date_already_reserved?
-    raise DateInPast if date_in_past?
   end
 
   private
@@ -30,10 +29,6 @@ class Reservation < Sequel::Model
       return true if range_overlaps?
     end
     false
-  end
-
-  def date_in_past?
-    reserved_at < Date.today
   end
 
   def range_overlaps?

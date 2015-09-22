@@ -1,6 +1,5 @@
 class EmptyParams < Exception; end
 class DateAlreadyReserved < Exception; end
-class DateInPast < Exception; end
 
 class CreateReservation
   attr_writer :reserved_at, :from, :to
@@ -18,7 +17,7 @@ class CreateReservation
 
       @reservation = Reservation.create(reserved_at: @reserved_at, from: @from, to: @to)
       @persisted = true
-    rescue ArgumentError, EmptyParams, DateInPast, DateAlreadyReserved, Sequel::ValidationFailed => e
+    rescue ArgumentError, EmptyParams, DateAlreadyReserved, Sequel::ValidationFailed => e
       @errors.add(:error, e)
     end
   end
