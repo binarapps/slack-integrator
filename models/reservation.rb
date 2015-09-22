@@ -2,6 +2,8 @@ require "sequel"
 
 class Reservation < Sequel::Model
 
+  subset(:today, :reserved_at => Date.today)
+
   alias_method :save!, :save
   plugin :validation_helpers
   plugin :json_serializer

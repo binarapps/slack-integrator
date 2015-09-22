@@ -13,8 +13,8 @@ class RodaApp < Roda
 
   route do |r|
     r.root do
-      @reservations = Reservation.all
-      view('home')
+      @reservations = Reservation.today
+      view('reservations/index')
     end
 
     # /api

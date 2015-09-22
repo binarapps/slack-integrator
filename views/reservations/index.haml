@@ -1,0 +1,11 @@
+="Number of today's reservations: #{@reservations.count}"
+
+%table.table.table-striped
+  %tr
+    %th.span1 From
+    %th.span2 To
+  -@reservations.each do |reservation|
+    %tr
+      %td= reservation.from
+      %td= reservation.to
+
