@@ -1,4 +1,4 @@
-class Slack
+class ReservationSlackConfig
     CONFIG = {
       'channel'          =>  ENV.fetch('CHANNEL'),
       'name'             => 'botsy',
