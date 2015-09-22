@@ -14,7 +14,7 @@ class RodaApp < Roda
 
 
   config = {
-    'channel'          => '#default',
+    'channel'          => ENV.fetch('CHANNEL'),
     'name'             => 'botsy',
     'incoming_webhook' =>  ENV.fetch('INCOMING_WEBHOOK'),
     'outgoing_token'   => 'secret'
