@@ -1,6 +1,7 @@
 require "roda"
 require "byebug"
 require 'slackbotsy'
+require 'set'
 require 'open-uri'
 require './models'
 require './domains/create_reservation'
