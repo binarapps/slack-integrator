@@ -6,12 +6,7 @@ class PostToSlack
   end
 
   def say
-    @bot.say(@message) if production?
-  end
-
-  private
-  def production?
-    ENV.fetch('RACK_ENV') == 'production'
+    @bot.say(@message)
   end
 
 end

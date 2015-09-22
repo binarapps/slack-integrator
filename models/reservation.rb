@@ -25,14 +25,19 @@ class Reservation < Sequel::Model
 
     return false if reservations.empty?
     reservations.each do |reservation|
-      existing_range = reservation.from..reservation.to
-      requested_range = from..to
-      return true if existing_range.cover?(requested_range)
+      @existing_range = reservation.from..reservation.to
+      @requested_range = from..to
+      return true if range_overlaps?
     end
+    false
   end
 
   def date_in_past?
     reserved_at < Date.today
+  end
+
+  def range_overlaps?
+    (@existing_range.first <= @requested_range.last) && (@requested_range.first <= @existing_range.last)
   end
 
 end

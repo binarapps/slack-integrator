@@ -6,6 +6,7 @@ require './models'
 require './domains/create_reservation'
 require './domains/post_to_slack'
 require './configurations/reservation_slack_config'
+require './helpers/enviroment'
 
 class RodaApp < Roda
   plugin :render, engine: 'haml'
@@ -31,7 +32,7 @@ class RodaApp < Roda
             reservation.create
 
             if reservation.persisted?
-              PostToSlack.new(ReservationSlackConfig::CONFIG, reservation.success_message).say
+              PostToSlack.new(ReservationSlackConfig::CONFIG, reservation.success_message).say if production?
               r.response.status = 200
             else
               r.response.status = 400
