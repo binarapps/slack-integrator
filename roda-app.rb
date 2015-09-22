@@ -10,16 +10,17 @@ require './configurations/reservation_slack_config'
 class RodaApp < Roda
   plugin :render, engine: 'haml'
   plugin :json, :classes=>[Sequel::Model, Array, Hash]
+  plugin :default_headers, 'Content-Type'=>'application/json'
 
   route do |r|
     r.root do
+      response['Content-Type'] = 'text/html'
       @reservations = Reservation.today
       view('reservations/index')
     end
 
     # /api
     r.on "api" do
-    plugin :default_headers, 'Content-Type'=>'application/json'
 
       # /api/reservations
       r.on "reservations" do
