@@ -67,17 +67,17 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  byebug
-  database_cleaner
-  dotenv
-  factory_girl
-  haml
-  pg
-  rack-test
-  roda
-  rspec
-  sequel
-  slackbotsy
+  byebug (~> 6.0.2)
+  database_cleaner (~> 1.4.1)
+  dotenv (~> 2.0.2)
+  factory_girl (~> 4.5.0)
+  haml (~> 4.0.7)
+  pg (~> 0.18.3)
+  rack-test (~> 0.6.3)
+  roda (~> 2.6.0)
+  rspec (~> 3.3.0)
+  sequel (~> 4.26.0)
+  slackbotsy (~> 0.4.2)
 
 BUNDLED WITH
    1.10.6
