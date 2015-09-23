@@ -34,6 +34,9 @@ After you filled in proper env variables you need and added integrations on your
 
 Format of the text you type after slash command is: `DD/MM-HH-HH`
 
+## Development
+If you want to improve or add some integrations check issues or simply create one.
+
 ## Tests
 
 `rspec spec`
