@@ -1,37 +1,27 @@
 class EmptyParams < Exception; end
 class DateAlreadyReserved < Exception; end
 
-class CreateReservation
+class CreateReservation < Roda
   attr_writer :reserved_at, :from, :to
-  attr_reader :reservation, :errors
+  attr_reader :reservation
 
   def initialize(params)
-    @params = params["text"]
-    @errors = Sequel::Model::Errors.new
+    @params = params['text']
   end
 
   def create
-    begin
-      raise EmptyParams if empty_params?
-      filter_params
+    raise EmptyParams if empty_params?
+    filter_params
 
-      @reservation = Reservation.create(reserved_at: @reserved_at, from: @from, to: @to)
-      @persisted = true
-    rescue ArgumentError, EmptyParams, DateAlreadyReserved, Sequel::ValidationFailed => e
-      @errors.add(:error, e)
-    end
-  end
-
-  def persisted?
-    @persisted
+    @reservation = Reservation.create(reserved_at: @reserved_at, from: @from, to: @to)
   end
 
   def success_message
     "Reservation made for #{@reserved_at} from: #{@from} - to: #{@to}"
   end
 
-  def error_message
-    "Sorry, errors occured: #{@errors}"
+  def error_message(error)
+    "Sorry, errors occured: #{error}"
   end
 
   private
