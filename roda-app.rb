@@ -3,11 +3,11 @@ require "byebug"
 require 'slackbotsy'
 require 'set'
 require 'open-uri'
-require './models'
-require './services/create_reservation'
-require './services/post_to_slack'
-require './configurations/reservation_slack_config'
-require './helpers/enviroment'
+
+require_relative 'models'
+Dir["./services/*.rb"].each {|file| require file }
+Dir["./configurations/*.rb"].each {|file| require file }
+Dir["./helpers/*.rb"].each {|file| require file }
 
 class RodaApp < Roda
   plugin :render, engine: 'haml'
@@ -23,8 +23,8 @@ class RodaApp < Roda
       @reservations = Reservation.today
       view('reservations/index')
     end
-    require_relative 'apps/reservation'
 
+    require_relative 'apps/reservation'
     # /api
     r.on "api" do
 
