@@ -37,6 +37,16 @@ Format of the text you type after slash command is: `DD/MM-HH-HH`
 ## Development
 If you want to improve or add some integrations check issues or simply create one.
 
+## New slack integration
+Application structure has been prepared to easly add new integrations.
+
+1. Create `your_integration_name.rb` file in `apps` folder.
+2. Create a service witch your funcionality in `services` folder.
+3. If you need to create a model for some object create it in `models` folder, create a migration and add it to `models.rb` file.
+4. Create slack configuration in `configurations` folder.
+5. Initialize a bot in `roda-app.rb` with `opts[:your_bot_name] = Slackbotsy::Bot.new(YOUR_CONFIG)`
+6. You can now use this bot to post message with `PostToSlack.say(:your_bot_name, message)`
+
 ## Tests
 
 `rspec spec`
