@@ -10,6 +10,8 @@ Dir["./configurations/*.rb"].each {|file| require file }
 Dir["./helpers/*.rb"].each {|file| require file }
 
 class RodaApp < Roda
+  # uncomment this line if you want to include your assets
+  # plugin :assets, YAML.load_file('assets/manifest.yml')
   plugin :render, engine: 'haml'
   plugin :json, :classes=>[Sequel::Model, Array, Hash]
   plugin :default_headers, 'Content-Type'=>'application/json'
@@ -18,6 +20,7 @@ class RodaApp < Roda
   plugin :sinatra_helpers
 
   route do |r|
+    # r.assets
     r.root do
       response['Content-Type'] = 'text/html'
       @reservations = Reservation.today
