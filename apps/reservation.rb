@@ -1,5 +1,3 @@
-require 'set'
-
 RodaApp.route('reservation') do |r|
   # POST /api/reservations
   r.post do
@@ -7,9 +5,8 @@ RodaApp.route('reservation') do |r|
       @reservation = CreateReservation.new(r.params)
       @reservation.create
 
-      PostToSlack.new(ReservationSlackConfig::CONFIG, @reservation.success_message).say if production?
+      PostToSlack.say(:reservation_bot, @reservation.success_message)
       status(200)
-
       rescue ArgumentError, EmptyParams, DateAlreadyReserved, Sequel::ValidationFailed => e
         status(400)
         @reservation.error_message(e)

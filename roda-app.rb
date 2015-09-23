@@ -1,8 +1,8 @@
-require "roda"
-require "byebug"
+require 'roda'
+require 'byebug'
 require 'slackbotsy'
-require 'set'
 require 'open-uri'
+require 'set'
 
 require_relative 'models'
 Dir["./services/*.rb"].each {|file| require file }
@@ -10,6 +10,8 @@ Dir["./configurations/*.rb"].each {|file| require file }
 Dir["./helpers/*.rb"].each {|file| require file }
 
 class RodaApp < Roda
+  # bots init
+  opts[:reservation_bot] = Slackbotsy::Bot.new(ReservationSlackConfig::CONFIG)
   # uncomment this line if you want to include your assets
   # plugin :assets, YAML.load_file('assets/manifest.yml')
   plugin :render, engine: 'haml'
@@ -30,7 +32,6 @@ class RodaApp < Roda
     require_relative 'apps/reservation'
     # /api
     r.on "api" do
-
       # /api/reservations
       r.on "reservations" do
         r.route 'reservation'
