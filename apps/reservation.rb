@@ -1,3 +1,5 @@
+require 'set'
+
 RodaApp.route('reservation') do |r|
   # POST /api/reservations
   r.post do
