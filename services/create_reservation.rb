@@ -1,7 +1,7 @@
 class EmptyParams < Exception; end
 class DateAlreadyReserved < Exception; end
 
-class CreateReservation < Roda
+class CreateReservation
   attr_writer :reserved_at, :from, :to
   attr_reader :reservation
 
