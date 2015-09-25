@@ -4,3 +4,7 @@ machine:
     RESERVATION_CHANNEL: ''
     RESERVATION_INCOMING_WEBHOOK: ''
     RESERVATION_OUTGOING_TOKEN: ''
+    RACK_ENV: 'test'
+test:
+  pre:
+    - bundle exec rake db:migrate RAILS_ENV=test
