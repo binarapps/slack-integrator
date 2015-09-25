@@ -5,7 +5,7 @@ RodaApp.route('reservation') do |r|
       @reservation = CreateReservation.new(r.params)
       @reservation.create
 
-      PostToSlack.say(:reservation_bot, @reservation.success_message)
+      PostToSlack.say(:reservation_bot, @reservation.success_message) if production?
       status(200)
       rescue ArgumentError, EmptyParams, DateAlreadyReserved, Sequel::ValidationFailed => e
         status(400)
