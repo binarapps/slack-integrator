@@ -18,10 +18,10 @@ Application allows you to easly create Slack integrations.
 
   ```
 DATABASE_URL
-INCOMING_WEBHOOK
+RESERVATION_INCOMING_WEBHOOK
 RESERVATION_CHANNEL
 RACK_ENV
-OUTGOING_TOKEN
+RESERVATION_OUTGOING_TOKEN
   ```
 3. gem install bundler
 4. bundle
