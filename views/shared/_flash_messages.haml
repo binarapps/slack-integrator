@@ -1,3 +1,4 @@
-%div
-  .alert.alert-danger{role: "alert"}
-    =flash[:error]
+-unless flash[:error].nil?
+  %div
+    .alert.alert-danger{role: "alert"}
+      =flash[:error]

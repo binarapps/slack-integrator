@@ -35,3 +35,4 @@ build/
 .rvmrc
 .env
 .DS_Store
+configurations/authorized_users.yml
