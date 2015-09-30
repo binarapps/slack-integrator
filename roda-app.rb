@@ -3,6 +3,7 @@ require 'byebug'
 require 'slackbotsy'
 require 'open-uri'
 require 'set'
+require 'rack/csrf'
 
 require_relative 'configurations/warden'
 require_relative 'models'
@@ -21,8 +22,10 @@ class RodaApp < Roda
   plugin :shared_vars
   plugin :sinatra_helpers
   plugin :partials
+  # plugin :csrf, raise: true
 
   use Rack::Session::Cookie, secret: ENV.fetch('SECRET_TOKEN')
+  use Rack::Csrf, :raise => true
 
   use Warden::Manager do |manager|
     manager.scope_defaults :default, strategies: [:password]

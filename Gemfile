@@ -7,8 +7,9 @@ gem 'sequel', '~> 4.26.0'
 gem 'dotenv', '~> 2.0.2'
 gem 'byebug', '~> 6.0.2'
 gem 'slackbotsy', '~> 0.4.2'
-gem 'sequel_secure_password'
-gem 'warden'
+gem 'sequel_secure_password', '~> 0.2.12'
+gem 'warden', '~> 1.2.3'
+gem 'rack_csrf', '~> 2.5.0'
 
 group :test do
   gem 'database_cleaner', '~> 1.4.1'

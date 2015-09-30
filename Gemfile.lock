@@ -35,6 +35,8 @@ GEM
       rack
     rack-test (0.6.3)
       rack (>= 1.0)
+    rack_csrf (2.5.0)
+      rack (>= 1.1.0)
     roda (2.6.0)
       rack
     rspec (3.3.0)
@@ -80,12 +82,13 @@ DEPENDENCIES
   haml (~> 4.0.7)
   pg (~> 0.18.3)
   rack-test (~> 0.6.3)
+  rack_csrf (~> 2.5.0)
   roda (~> 2.6.0)
   rspec (~> 3.3.0)
   sequel (~> 4.26.0)
-  sequel_secure_password
+  sequel_secure_password (~> 0.2.12)
   slackbotsy (~> 0.4.2)
-  warden
+  warden (~> 1.2.3)
 
 BUNDLED WITH
    1.10.6
