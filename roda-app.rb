@@ -4,6 +4,7 @@ require 'slackbotsy'
 require 'open-uri'
 require 'set'
 
+require_relative 'configurations/warden'
 require_relative 'models'
 Dir["./services/*.rb"].each {|file| require file }
 Dir["./configurations/*.rb"].each {|file| require file }
@@ -12,24 +13,43 @@ Dir["./helpers/*.rb"].each {|file| require file }
 class RodaApp < Roda
   # bots init
   opts[:reservation_bot] = Slackbotsy::Bot.new(ReservationSlackConfig::CONFIG)
-  # uncomment this line if you want to include your assets
-  # plugin :assets, YAML.load_file('assets/manifest.yml')
+  plugin :assets, css: 'signin.css'
   plugin :render, engine: 'haml'
   plugin :json, :classes=>[Sequel::Model, Array, Hash]
   plugin :default_headers, 'Content-Type'=>'application/json'
   plugin :multi_route
   plugin :shared_vars
   plugin :sinatra_helpers
+  plugin :partials
+
+  use Rack::Session::Cookie, secret: ENV.fetch('SECRET_TOKEN')
+
+  use Warden::Manager do |manager|
+    manager.scope_defaults :default, strategies: [:password]
+    manager.failure_app = self
+  end
 
   route do |r|
-    # r.assets
+    require_relative 'apps/user_sessions'
+    require_relative 'apps/reservation'
+
+    r.assets
+
+    # /
     r.root do
+      env['warden'].authenticate!
+
       response['Content-Type'] = 'text/html'
       @reservations = Reservation.today
       view('reservations/index')
     end
 
-    require_relative 'apps/reservation'
+    # /user_sessions
+    r.on 'user_sessions' do
+      response['Content-Type'] = 'text/html'
+      r.route 'user_sessions'
+    end
+
     # /api
     r.on "api" do
       # /api/reservations
