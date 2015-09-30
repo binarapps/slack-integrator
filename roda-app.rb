@@ -22,7 +22,7 @@ class RodaApp < Roda
   plugin :shared_vars
   plugin :sinatra_helpers
   plugin :partials
-  # plugin :csrf, raise: true
+  plugin :flash
 
   use Rack::Session::Cookie, secret: ENV.fetch('SECRET_TOKEN')
   use Rack::Csrf, :raise => true
@@ -34,6 +34,7 @@ class RodaApp < Roda
 
   route do |r|
     require_relative 'apps/user_sessions'
+    require_relative 'apps/user_registrations'
     require_relative 'apps/reservation'
 
     r.assets
@@ -51,6 +52,12 @@ class RodaApp < Roda
     r.on 'user_sessions' do
       response['Content-Type'] = 'text/html'
       r.route 'user_sessions'
+    end
+
+    # /user_registrations
+    r.on 'user_registrations' do
+      response['Content-Type'] = 'text/html'
+      r.route 'user_registrations'
     end
 
     # /api
