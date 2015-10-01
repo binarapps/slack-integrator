@@ -16,6 +16,7 @@ group :test do
   gem 'factory_girl', '~> 4.5.0'
   gem 'rspec', '~> 3.3.0'
   gem 'rack-test', '~> 0.6.3'
+  gem 'capybara'
 end
 
 

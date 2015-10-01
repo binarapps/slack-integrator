@@ -9,3 +9,7 @@ end
 def user_signed_in?
   current_user.nil?
 end
+
+def api_request?
+  lambda {|request| request.env['PATH_INFO'].start_with?('/api') }
+end

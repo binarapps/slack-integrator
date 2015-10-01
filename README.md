@@ -27,10 +27,11 @@ RESERVATION_OUTGOING_TOKEN
 4. bundle
 5. rake db:create
 6. rake db:migrate
-7. to run server: rackup
+7. Application is using users whitelisting. Create `authorized_users.yml` in `configurations` folder and list users which should be whitelisted for registration.
+8. to run server: rackup
 
 ## Usage of the example reservation app
-After you filled in proper env variables you need and added integrations on your slack panel, you can invoke the command from you slack channel (I recommend slash commands). 
+After you filled in proper env variables you need and added integrations on your slack panel, you can invoke the command from you slack channel (I recommend slash commands).
 
 Format of the text you type after slash command is: `DD/MM-HH-HH`
 

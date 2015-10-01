@@ -25,10 +25,12 @@ class RodaApp < Roda
   plugin :flash
 
   use Rack::Session::Cookie, secret: ENV.fetch('SECRET_TOKEN')
-  use Rack::Csrf, :raise => true
+  use Rack::Csrf, :raise => true, :skip_if => api_request?
 
   use Warden::Manager do |manager|
-    manager.scope_defaults :default, strategies: [:password]
+    manager.scope_defaults :default,
+    strategies: [:password],
+    action: 'user_sessions/unauthenticated'
     manager.failure_app = self
   end
 
