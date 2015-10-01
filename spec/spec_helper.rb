@@ -28,22 +28,28 @@ def app
 end
 
 Capybara.app = RodaApp
+# Capybara.javascript_driver = :webkit
+Capybara.current_driver = :selenium
 
 FactoryGirl.definition_file_paths = %w{./factories ./spec/factories}
 FactoryGirl.find_definitions
 
 RSpec.configure do |config|
+  # config.include Capybara::DSL
+
   config.include Rack::Test::Methods
 
   config.before(:suite) do
-    DatabaseCleaner.strategy = :transaction
     DatabaseCleaner.clean_with(:truncation)
   end
 
-  config.around(:each) do |example|
-    DatabaseCleaner.cleaning do
-      example.run
-    end
+  config.before(:each) do |example|
+    DatabaseCleaner.strategy = example.metadata[:js] ? :truncation : :transaction
+    DatabaseCleaner.start
+  end
+
+  config.after(:each) do
+    DatabaseCleaner.clean
   end
 
   # rspec-expectations config goes here. You can use an alternate
