@@ -1,0 +1,4 @@
+- if current_user
+  %form.inline{ action: '/user_sessions/logout', method: 'POST' }
+    = Rack::Csrf.tag(env)
+    %button.btn.btn-warning{ type: 'submit' } Logout
