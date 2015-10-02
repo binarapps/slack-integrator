@@ -4,6 +4,7 @@ machine:
     RESERVATION_CHANNEL: ''
     RESERVATION_INCOMING_WEBHOOK: ''
     RESERVATION_OUTGOING_TOKEN: ''
+    SECRET_TOKEN: 'secret'
     RACK_ENV: 'test'
 test:
   pre:
