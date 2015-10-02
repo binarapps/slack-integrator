@@ -1,6 +1,6 @@
 machine:
   environment:
-    DATABASE_URL: postgres://ubuntu:@127.0.0.1:5432/circle_test
+    TEST_DATABASE_URL: postgres://ubuntu:@127.0.0.1:5432/circle_test
     RESERVATION_CHANNEL: ''
     RESERVATION_INCOMING_WEBHOOK: ''
     RESERVATION_OUTGOING_TOKEN: ''
