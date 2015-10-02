@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe "the signup process", :type => :feature do
+describe "the signup process", :type => :feature, :js => true do
 
   context 'with proper params' do
 
@@ -12,7 +12,7 @@ describe "the signup process", :type => :feature do
 
       click_button 'Sign up'
       expect(User.count).to eq(1)
-      # expect(page).to have_content 'Log in'
+      expect(page).to have_content 'Log in'
     end
   end
 

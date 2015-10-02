@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe "the sign in process", :type => :feature do
+describe "the sign in process", :type => :feature, :js => true do
 
   let(:user){ FactoryGirl.create(:user) }
 
