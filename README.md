@@ -18,6 +18,7 @@ Application allows you to easly create Slack integrations.
 
   ```
 DATABASE_URL
+TEST_DATABASE_URL
 RESERVATION_INCOMING_WEBHOOK
 RESERVATION_CHANNEL
 RACK_ENV
@@ -49,7 +50,8 @@ Application structure has been prepared to easly add new integrations.
 6. You can now use this bot to post message with `PostToSlack.say(:your_bot_name, message)`
 
 ## Tests
-
+`rake db:create RACK_ENV=test`
+`rake db:migrate RACK_ENV=test`
 `rspec spec`
 
 ## License

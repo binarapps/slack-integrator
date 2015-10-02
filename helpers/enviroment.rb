@@ -2,6 +2,10 @@ def production?
   ENV.fetch('RACK_ENV') == 'production'
 end
 
+def test?
+  ENV.fetch('RACK_ENV') == 'test'
+end
+
 def current_user
   env['warden'].user
 end

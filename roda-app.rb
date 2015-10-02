@@ -6,10 +6,11 @@ require 'set'
 require 'rack/csrf'
 
 # require_relative 'configurations/warden'
+Dir["./helpers/*.rb"].each {|file| require file }
 require_relative 'models'
 Dir["./services/*.rb"].each {|file| require file }
 Dir["./configurations/*.rb"].each {|file| require file }
-Dir["./helpers/*.rb"].each {|file| require file }
+
 
 class RodaApp < Roda
   # bots init

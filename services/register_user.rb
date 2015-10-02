@@ -11,7 +11,7 @@ class RegisterUser
   end
 
   def call
-    authorize_specific_users
+    authorize_specific_users if production?
     User.create(email: @email,
                 password: @password,
                 password_confirmation: @password_confirmation)
