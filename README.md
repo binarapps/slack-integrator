@@ -28,7 +28,7 @@ RESERVATION_OUTGOING_TOKEN
 4. bundle
 5. rake db:create
 6. rake db:migrate
-7. Application is using users whitelisting. Create `authorized_users.yml` in `configurations` folder and list users which should be whitelisted for registration.
+7. Application can use users whitelisting. Create `authorized_users.yml` in `configurations` folder and list users which should be whitelisted for registration. Uncomment proper line in `register_user.rb`.
 8. to run server: rackup
 
 ## Usage of the example reservation app
