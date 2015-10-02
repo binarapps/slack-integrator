@@ -20,6 +20,6 @@ class RegisterUser
   private
   def authorize_specific_users
     yml = YAML.load_file('configurations/authorized_users.yml')
-    raise UnauthorizedUser if yml[@email].nil?
+    raise UnauthorizedUser unless yml[@email]
   end
 end
