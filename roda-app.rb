@@ -15,7 +15,7 @@ Dir["./configurations/*.rb"].each {|file| require file }
 class RodaApp < Roda
   # bots init
   opts[:reservation_bot] = Slackbotsy::Bot.new(ReservationSlackConfig::CONFIG)
-  plugin :assets, css: 'signin.css'
+  plugin :assets, css: ['signin.css', 'reservations.css']
   plugin :render, engine: 'haml'
   plugin :json, :classes=>[Sequel::Model, Array, Hash]
   plugin :default_headers, 'Content-Type'=>'application/json'
@@ -45,9 +45,10 @@ class RodaApp < Roda
     # /
     r.root do
       env['warden'].authenticate!
-
       response['Content-Type'] = 'text/html'
-      @reservations = Reservation.today
+      r.params['day'] ? @day = ( Date.parse r.params['day'] ): @day = Date.today
+      @reservations = Reservation.by_day(@day)
+      # @reservations = Reservation.where(reserved_at: @day)
       view('reservations/index')
     end
 

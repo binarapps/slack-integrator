@@ -10,8 +10,9 @@
       %td= reservation.to
 
 .reservations-paginate
-  %a{ href: "http://localhost:9292?day=#{@day - 1}" }
+  %a{ href: "http://localhost:9292/day?day=#{@day - 1}" }
     <- Previous
 
-  %a{ href: "http://localhost:9292?day=#{@day + 1}" }
+  %a{ href: "http://localhost:9292/day?day=#{@day + 1}" }
     Next ->
+

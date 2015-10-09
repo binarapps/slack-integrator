@@ -8,6 +8,10 @@ class Reservation < Sequel::Model
   plugin :validation_helpers
   plugin :json_serializer
 
+  def self.by_day(day)
+    Reservation.where(reserved_at: day)
+  end
+
   def validate
     super
     validates_presence [:reserved_at, :from, :to]
