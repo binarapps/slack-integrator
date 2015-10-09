@@ -48,7 +48,6 @@ class RodaApp < Roda
       response['Content-Type'] = 'text/html'
       r.params['day'] ? @day = ( Date.parse r.params['day'] ): @day = Date.today
       @reservations = Reservation.by_day(@day)
-      # @reservations = Reservation.where(reserved_at: @day)
       view('reservations/index')
     end
 
