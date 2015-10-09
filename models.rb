@@ -1,5 +1,7 @@
-require "sequel"
+require 'sequel'
 require 'dotenv'
+require './helpers/enviroment'
+
 Dotenv.load
 
 unless test?
