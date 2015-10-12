@@ -1,4 +1,4 @@
-="Number of today's reservations: #{@reservations.count}"
+= "Number of reservations at #{@day}: #{@reservations.count}"
 
 %table.table.table-striped
   %tr
@@ -9,3 +9,9 @@
       %td= reservation.from
       %td= reservation.to
 
+.reservations-paginate
+  %a{ href: "http://localhost:9292?day=#{@day - 1}" }
+    <- Previous
+
+  %a{ href: "http://localhost:9292?day=#{@day + 1}" }
+    Next ->
