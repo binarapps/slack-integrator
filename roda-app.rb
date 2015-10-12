@@ -46,7 +46,7 @@ class RodaApp < Roda
     r.root do
       env['warden'].authenticate!
       response['Content-Type'] = 'text/html'
-      r.params['day'] ? @day = ( Date.parse r.params['day'] ): @day = Date.today
+      r.params['day'] ? @day = ( Date.parse r.params['day'] ) : @day = Date.today
       @reservations = Reservation.by_day(@day)
       view('reservations/index')
     end
