@@ -5,6 +5,7 @@ require 'factory_girl'
 require 'dotenv'
 require 'capybara/rspec'
 require 'capybara-webkit'
+require_relative '../spec/support/session_helper'
 
 ENV['RACK_ENV'] = 'test'
 

@@ -7,6 +7,7 @@ RodaApp.route('reservation') do |r|
 
       PostToSlack.say(:reservation_bot, @reservation.success_message) if production?
       status(200)
+      {'responseText'=> 'Rservation created'}.to_json
       rescue ArgumentError, EmptyParams, DateAlreadyReserved, Sequel::ValidationFailed => e
         status(400)
         @reservation.error_message(e)
