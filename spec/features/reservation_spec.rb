@@ -4,8 +4,11 @@ describe "reservation actions", :type => :feature, :js => true do
 
   let(:user) { FactoryGirl.create(:user) }
 
-  it 'creates new reservation' do
+  before(:each) {
     login_user(user)
+  }
+
+  it 'creates new reservation' do
     visit '/'
     click_button 'Create new reservation'
     fill_in 'from', with: '11'
@@ -16,7 +19,6 @@ describe "reservation actions", :type => :feature, :js => true do
   end
 
   it 'returns reservation alreay exists error' do
-    login_user(user)
     FactoryGirl.create(:reservation, from: '11', to: '12')
     visit '/'
     click_button 'Create new reservation'
@@ -28,7 +30,6 @@ describe "reservation actions", :type => :feature, :js => true do
   end
 
   it 'returns empty params error' do
-    login_user(user)
     FactoryGirl.create(:reservation, from: '11', to: '12')
     visit '/'
     click_button 'Create new reservation'
