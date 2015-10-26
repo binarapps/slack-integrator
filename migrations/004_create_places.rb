@@ -6,6 +6,7 @@ Sequel.migration do
       String :full_name, null: false
       String :schema
       String :phone, null: false
+      String :menu
     end
   end
 end
