@@ -49,6 +49,17 @@ Application structure has been prepared to easly add new integrations.
 5. Initialize a bot in `roda-app.rb` with `opts[:your_bot_name] = Slackbotsy::Bot.new(YOUR_CONFIG)`
 6. You can now use this bot to post message with `PostToSlack.say(:your_bot_name, message)`
 
+## Food integration
+1. Create file 'places.yml'
+2. Add there your restaurants. Schema:
+  name:
+    full_name: ''
+    phone: '
+    schema: ''
+    menu: ''
+  Where name is a word called in slack to order from that place
+3. Run rake places:create
+
 ## Tests
 `rake db:create RACK_ENV=test`
 `rake db:migrate RACK_ENV=test`
