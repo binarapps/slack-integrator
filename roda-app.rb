@@ -73,7 +73,7 @@ class RodaApp < Roda
         r.route 'reservation'
       end
       # /api/orders
-      r.on "orders" do
+      r.on 'orders' do
         r.route 'order'
       end
     end

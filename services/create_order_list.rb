@@ -1,7 +1,6 @@
 class OrderListNotClosed < Exception; end
 
 class CreateOrderList
-
   def initialize(params)
     @params = factor_params(params)
   end
@@ -13,10 +12,9 @@ class CreateOrderList
     end
     if place
       OrderList.create(place: place, created_at: Date.today)
-      message = "Place choosed - #{ place.full_name }! Now order whatever you want. Schema: #{ place.schema }"
+      "Place choosed - #{place.full_name}! Now order whatever you want. Schema: #{place.schema}"
     else
-      message = "No such place as #{ @params }"
+      "No such place as #{@params}"
     end
-    message
   end
 end

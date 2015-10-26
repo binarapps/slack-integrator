@@ -1,7 +1,6 @@
 require 'yaml'
 require './models.rb'
 
-
 namespace :places do
   task :create do
     places = YAML::load(File.open('places.yml'))

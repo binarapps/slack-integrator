@@ -1,12 +1,10 @@
 require 'spec_helper'
 
-
 describe 'Ordering' do
   let(:proper_params) { { user_name: 'user', text: 'trigger txt', trigger_word: 'trigger' } }
   let(:wrong_format_params) { { user_name: 'user', text: 'trigger txt' } }
 
   context 'Order list' do
-
     it 'should create ordering place' do
       FactoryGirl.create(:place)
       post 'api/orders/place', proper_params
@@ -35,7 +33,6 @@ describe 'Ordering' do
   end
 
   context 'New order' do
-
     it 'should create new order' do
       FactoryGirl.create(:place)
       FactoryGirl.create(:order_list, place: Place.last)
@@ -46,7 +43,6 @@ describe 'Ordering' do
   end
 
   context 'Close order list' do
-
     it 'should close last order list' do
       FactoryGirl.create(:place)
       FactoryGirl.create(:order_list, place: Place.last)
@@ -55,5 +51,4 @@ describe 'Ordering' do
       expect(OrderList.last.closed).to eq(true)
     end
   end
-
 end
