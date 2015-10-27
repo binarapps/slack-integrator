@@ -1,3 +1,4 @@
 def factor_params(params)
-  value = params['text'].split(params['trigger_word'])[1].delete(' ')
+  trigger = params['trigger_word'] + ' '
+  value = params['text'].split(trigger)[1]
 end
