@@ -15,7 +15,7 @@ Dir["./configurations/*.rb"].each {|file| require file }
 class RodaApp < Roda
   # bots init
   opts[:reservation_bot] = Slackbotsy::Bot.new(ReservationSlackConfig::CONFIG)
-  opts[:food_bot] = Slackbotsy::Bot.new(FoodSlackConfig::CONFIG)
+  #opts[:food_bot] = Slackbotsy::Bot.new(FoodSlackConfig::CONFIG)
   plugin :assets, css: ['signin.css', 'reservations.css']
   plugin :render, engine: 'haml'
   plugin :json, :classes=>[Sequel::Model, Array, Hash]
