@@ -33,7 +33,7 @@ def app
 end
 
 Capybara.app = RodaApp
-Capybara.current_driver = :webkit
+Capybara.current_driver = :selenium
 
 Capybara::Webkit.configure do |config|
   config.block_unknown_urls
