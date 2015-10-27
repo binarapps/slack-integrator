@@ -12,7 +12,7 @@ RodaApp.route('order') do |r|
     order_list = OrderList.last
     orders = order_list.show_orders
     if order_list.closed
-      PostToSlack.say(:food_bot, "Orders are closed... Anyway last ones: \n #{ orders }") unless test?
+      PostToSlack.say(:food_bot, 'Orders are closed... Anyway last ones: \n #{ orders }') unless test?
     else
       PostToSlack.say(:food_bot, "Check if its okey: \n #{ orders }") unless test?
     end
