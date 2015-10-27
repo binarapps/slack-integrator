@@ -14,9 +14,9 @@ describe "reservation actions", :type => :feature, :js => true do
     fill_in 'from', with: '11'
     fill_in 'to', with: '12'
 
-    expect(Reservation.count).to match(0)
+    expect(Reservation.count).to eq(0)
     click_button 'Save'
-    expect(Reservation.count).to match(1)
+    expect(Reservation.count).to eq(1)
   end
 
   it 'returns reservation alreay exists error' do
@@ -26,9 +26,9 @@ describe "reservation actions", :type => :feature, :js => true do
     fill_in 'from', with: '11'
     fill_in 'to', with: '12'
 
-    expect(Reservation.count).to match(1)
+    expect(Reservation.count).to eq(1)
     click_button 'Save'
-    expect(Reservation.count).to match(1)
+    expect(Reservation.count).to eq(1)
   end
 
   it 'returns empty params error' do
@@ -37,8 +37,8 @@ describe "reservation actions", :type => :feature, :js => true do
     fill_in 'from', with: ''
     fill_in 'to', with: ''
 
-    expect(Reservation.count).to match(0)
+    expect(Reservation.count).to eq(0)
     click_button 'Save'
-    expect(Reservation.count).to match(0)
+    expect(Reservation.count).to eq(0)
   end
 end

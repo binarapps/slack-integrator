@@ -32,10 +32,11 @@ def app
 end
 
 Capybara.app = RodaApp
-Capybara.current_driver = :selenium
+Capybara.current_driver = :webkit
 
 Capybara::Webkit.configure do |config|
   config.block_unknown_urls
+  config.debug = true
 end
 
 FactoryGirl.definition_file_paths = %w{./factories ./spec/factories}
