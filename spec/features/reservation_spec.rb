@@ -16,7 +16,7 @@ describe "reservation actions", :type => :feature, :js => true do
 
     expect(Reservation.count).to eq(0)
     click_button 'Save'
-    sleep(30)
+    sleep(60)
     expect(Reservation.count).to eq(1)
   end
 
