@@ -35,7 +35,7 @@ RodaApp.route('order') do |r|
   # POST /api/orders/menu
   r.post 'menu' do
     menu = Place.list
-    PostToSlack.say(:food_bot, menu)
+    PostToSlack.say(:food_bot, menu) unless test?
     status(200)
   end
 
