@@ -9,7 +9,7 @@ class Reservation < Sequel::Model
   plugin :json_serializer
 
   def self.by_day(day)
-    Reservation.where(reserved_at: day)
+    Reservation.where(reserved_at: day).order(:from)
   end
 
   def validate
