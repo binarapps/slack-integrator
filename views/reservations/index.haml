@@ -33,5 +33,5 @@
     $('.reserve').click( function(){
       $('.reservation-form').toggle();
     });
-    viewFunctions.ajax_reservation($("[name='_csrf'").val(), "#{request.base_url}/api/reservations");
+    viewFunctions.ajax_reservation($("[name='_csrf']").val(), "#{request.base_url}/api/reservations");
   });
