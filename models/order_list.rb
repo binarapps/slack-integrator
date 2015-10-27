@@ -7,10 +7,6 @@ class OrderList < Sequel::Model
   alias_method :save!, :save
 
   def show_orders
-    orders = ''
-    self.orders.each do |ord|
-      orders << ("@#{ord.user_name}: #{ord.item} \n")
-    end
-    orders
+    OrderList.last.orders.collect { |order| "@#{order.user_name}: #{order.item} \n" }.join(' ')
   end
 end

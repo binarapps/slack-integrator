@@ -10,7 +10,7 @@ class CreateOrder
       'Order already closed, please create new'
     else
       Order.create(item: @item, order_list: order_list, user_name: @user_name)
-      PostToSlack.say(:food_bot, '#{@user_name}: Order created to #{order_list.place.full_name}') unless test?
+      "#{@user_name}: Order created to #{order_list.place.full_name}"
     end
   end
 end

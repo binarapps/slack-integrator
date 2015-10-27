@@ -6,10 +6,8 @@ class Place < Sequel::Model
   alias_method :save!, :save
 
   def self.list
-    list = "Dostępne miejsca \n"
-    Place.all.each do |place|
-      list << ("#{place.name} , menu: #{place.menu} \n")
-    end
+    list = "Available places \n"
+    Place.all.each { |place| list << "#{place.name} , menu: #{place.menu} \n" }
     list
   end
 end

@@ -57,7 +57,9 @@ Application structure has been prepared to easly add new integrations.
     phone: '
     schema: ''
     menu: ''
-  Where name is a word called in slack to order from that place
+  Where:
+    name is a word called in slack to order from that place
+    schema is suggested example of order
 3. Run rake places:create
 
 ## Tests
