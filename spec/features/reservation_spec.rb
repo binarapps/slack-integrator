@@ -16,7 +16,6 @@ describe "reservation actions", :type => :feature, :js => true do
 
     expect(Reservation.count).to match(0)
     click_button 'Save'
-    wait_for_ajax
     expect(Reservation.count).to match(1)
   end
 
@@ -28,7 +27,6 @@ describe "reservation actions", :type => :feature, :js => true do
     fill_in 'to', with: '12'
 
     expect(Reservation.count).to match(1)
-    wait_for_ajax
     click_button 'Save'
     expect(Reservation.count).to match(1)
   end
@@ -40,7 +38,6 @@ describe "reservation actions", :type => :feature, :js => true do
     fill_in 'to', with: ''
 
     expect(Reservation.count).to match(0)
-    wait_for_ajax
     click_button 'Save'
     expect(Reservation.count).to match(0)
   end

@@ -31,7 +31,7 @@
 :javascript
   $( document ).ready(function() {
     $('.reserve').click( function(){
-      $('.reservation-form').toggle('10000');
+      $('.reservation-form').toggle();
     });
     viewFunctions.ajax_reservation($("[name='_csrf'").val(), "#{request.base_url}/api/reservations");
   });

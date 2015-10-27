@@ -6,7 +6,6 @@ require 'dotenv'
 require 'capybara/rspec'
 require 'capybara-webkit'
 require_relative '../spec/support/session_helper'
-require_relative '../spec/support/wait_for_ajax'
 
 ENV['RACK_ENV'] = 'test'
 
