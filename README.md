@@ -47,7 +47,7 @@ Application structure has been prepared to easly add new integrations.
 3. If you need to create a model for some object create it in `models` folder, create a migration and add it to `models.rb` file.
 4. Create slack configuration in `configurations` folder.
 5. Initialize a bot in `roda-app.rb` with `opts[:your_bot_name] = Slackbotsy::Bot.new(YOUR_CONFIG)`
-6. You can now use this bot to post message with `PostToSlack.say(:your_bot_name, message)`
+6. You can now use this bot to post message with `PostToSlack.say(:your_bot_name, message)`. Note that posting to slack works only in production enviroment. To change this, go into `app/services/post_to_slack.rb`.
 
 ## Tests
 `rake db:create RACK_ENV=test`
