@@ -9,7 +9,7 @@ class CreateOrderList
     place = Place.where(name: @params).first
     check_if_list_is_closed
     if place
-      OrderList.create(place: place, created_at: Date.today)
+      OrderList.create(place: place, created_at: Time.zone.today)
       "Place choosed - #{place.full_name}! Now order whatever you want. Schema: #{place.schema}"
     else
       "No such place as #{@params}"

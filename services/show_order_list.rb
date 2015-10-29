@@ -1,5 +1,4 @@
 class ShowOrderList
-
   def self.message
     order_list = OrderList.last
     orders = order_list.show_orders

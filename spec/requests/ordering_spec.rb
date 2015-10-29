@@ -8,7 +8,6 @@ describe 'Ordering' do
   let!(:order_list) { FactoryGirl.create(:order_list, place: Place.last) }
   let!(:order) { FactoryGirl.create(:order, order_list: OrderList.last) }
 
-
   context 'Order list' do
     it 'should create ordering place' do
       post 'api/orders/place', proper_params
