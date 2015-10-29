@@ -1,5 +1,4 @@
 class CloseOrderList
-
   def self.call
     order_list = OrderList.last
     orders = order_list.show_orders

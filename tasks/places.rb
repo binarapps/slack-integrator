@@ -7,7 +7,7 @@ namespace :places do
     names = places.keys
     names.each do |name|
       places[name]['name'] = name
-      place = Place.find_or_create(places[name])
+      Place.find_or_create(places[name])
     end
     puts '<= places created'
   end

@@ -1,4 +1,4 @@
-require "sequel"
+require 'sequel'
 
 class OrderList < Sequel::Model
   many_to_one :place
