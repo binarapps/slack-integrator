@@ -8,7 +8,9 @@ require 'rack/csrf'
 # require_relative 'configurations/warden'
 Dir["./helpers/*.rb"].each {|file| require file }
 require_relative 'models'
-Dir["./services/*.rb"].each {|file| require file }
+Dir[File.join("./services", "**/*.rb")].each do |f|
+  require f
+end
 Dir["./configurations/*.rb"].each {|file| require file }
 
 

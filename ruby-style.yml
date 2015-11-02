@@ -595,7 +595,7 @@ Rails/Validation:
   - app/models/**/*.rb
 Style/InlineComment:
   Description: Avoid inline comments.
-  Enabled: true
+  Enabled: false
 Style/MethodCalledOnDoEndBlock:
   Description: Avoid chaining a method call on a do...end block.
   StyleGuide: https://github.com/bbatsov/ruby-style-guide#single-line-blocks
