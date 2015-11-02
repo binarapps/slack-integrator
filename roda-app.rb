@@ -5,7 +5,6 @@ require 'open-uri'
 require 'set'
 require 'rack/csrf'
 
-# require_relative 'configurations/warden'
 Dir["./helpers/*.rb"].each {|file| require file }
 require_relative 'models'
 Dir[File.join("./services", "**/*.rb")].each do |f|
