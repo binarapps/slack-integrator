@@ -16,6 +16,8 @@ Dir["./configurations/*.rb"].each {|file| require file }
 class RodaApp < Roda
   # bots init
   opts[:reservation_bot] = Slackbotsy::Bot.new(ReservationSlackConfig::CONFIG)
+  opts[:pull_request_bot] = Slackbotsy::Bot.new(PullRequestSlackConfig::CONFIG)
+
   plugin :assets, css: ['signin.css', 'reservations.css']
   plugin :render, engine: 'haml'
   plugin :json, :classes=>[Sequel::Model, Array, Hash]
@@ -40,6 +42,7 @@ class RodaApp < Roda
     require_relative 'apps/user_sessions'
     require_relative 'apps/user_registrations'
     require_relative 'apps/reservation'
+    require_relative 'apps/pull_request'
 
     r.assets
 
@@ -69,6 +72,11 @@ class RodaApp < Roda
       # /api/reservations
       r.on "reservations" do
         r.route 'reservation'
+      end
+
+      # /api/pull_requests
+      r.on "pull_requests" do
+        r.route 'pull_request'
       end
 
     end
