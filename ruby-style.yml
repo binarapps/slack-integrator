@@ -207,11 +207,6 @@ Style/HashSyntax:
   SupportedStyles:
   - ruby19
   - hash_rockets
-Style/IfUnlessModifier:
-  Description: Favor modifier if/unless usage when you have a single-line body.
-  StyleGuide: https://github.com/bbatsov/ruby-style-guide#if-as-a-modifier
-  Enabled: false
-  MaxLineLength: 80
 Style/IndentationWidth:
   Description: Use 2 spaces for indentation.
   StyleGuide: https://github.com/bbatsov/ruby-style-guide#spaces-indentation
@@ -365,14 +360,6 @@ Style/SingleLineMethods:
 Style/StringLiterals:
   Description: Checks if uses of quotes match the configured preference.
   StyleGuide: https://github.com/bbatsov/ruby-style-guide#consistent-string-literals
-  Enabled: true
-  EnforcedStyle: single_quotes
-  SupportedStyles:
-  - single_quotes
-  - double_quotes
-Style/StringLiteralsInInterpolation:
-  Description: Checks if uses of quotes inside expressions in interpolated strings
-    match the configured preference.
   Enabled: true
   EnforcedStyle: single_quotes
   SupportedStyles:
@@ -918,10 +905,6 @@ Style/UnlessElse:
   Enabled: true
 Style/UnneededCapitalW:
   Description: Checks for %W when interpolation is not needed.
-  Enabled: true
-Style/UnneededPercentQ:
-  Description: Checks for %q/%Q when single quotes or double quotes would do.
-  StyleGuide: https://github.com/bbatsov/ruby-style-guide#percent-q
   Enabled: true
 Style/UnneededPercentX:
   Description: Checks for %x when `` would do.
