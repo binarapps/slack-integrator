@@ -5,16 +5,18 @@ require 'open-uri'
 require 'set'
 require 'rack/csrf'
 
-# require_relative 'configurations/warden'
-Dir["./helpers/*.rb"].each {|file| require file }
+Dir['./helpers/*.rb'].each { |file| require file }
 require_relative 'models'
-Dir["./services/*.rb"].each {|file| require file }
-Dir["./configurations/*.rb"].each {|file| require file }
+Dir[File.join('./services', '**/*.rb')].each do |f|
+  require f
+end
+Dir['./configurations/*.rb'].each { |file| require file }
 
 
 class RodaApp < Roda
   # bots init
   opts[:reservation_bot] = Slackbotsy::Bot.new(ReservationSlackConfig::CONFIG)
+  opts[:pull_request_bot] = Slackbotsy::Bot.new(PullRequestSlackConfig::CONFIG)
   opts[:food_bot] = Slackbotsy::Bot.new(FoodSlackConfig::CONFIG)
   plugin :assets, css: ['signin.css', 'reservations.css']
   plugin :render, engine: 'haml'
@@ -40,6 +42,7 @@ class RodaApp < Roda
     require_relative 'apps/user_sessions'
     require_relative 'apps/user_registrations'
     require_relative 'apps/reservation'
+    require_relative 'apps/pull_request'
 
     require_relative 'apps/order'
 
@@ -67,10 +70,14 @@ class RodaApp < Roda
     end
 
     # /api
-    r.on "api" do
+    r.on 'api' do
       # /api/reservations
-      r.on "reservations" do
+      r.on 'reservations' do
         r.route 'reservation'
+      end
+      # /api/pull_requests
+      r.on 'pull_requests' do
+        r.route 'pull_request'
       end
       # /api/orders
       r.on 'orders' do

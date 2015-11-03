@@ -6,9 +6,10 @@ describe "the signup process", :type => :feature, :js => true do
 
     it "signs me up" do
       visit '/user_registrations/new'
-      fill_in 'email', :with => 'user@example.com'
-      fill_in 'password', :with => 'password'
-      fill_in 'password_confirmation', :with => 'password'
+      fill_in 'email', with: 'user@example.com'
+      fill_in 'github_login', with: 'some_login'
+      fill_in 'password', with: 'password'
+      fill_in 'password_confirmation', with: 'password'
 
       click_button 'Sign up'
       expect(User.count).to eq(1)
@@ -20,9 +21,10 @@ describe "the signup process", :type => :feature, :js => true do
 
     it 'raises errors when passwords not match' do
       visit '/user_registrations/new'
-      fill_in 'email', :with => 'user@example.com'
-      fill_in 'password', :with => 'password'
-      fill_in 'password_confirmation', :with => 'notmatch'
+      fill_in 'email', with: 'user@example.com'
+      fill_in 'github_login', with: 'some_login'
+      fill_in 'password', with: 'password'
+      fill_in 'password_confirmation', with: 'notmatch'
 
       click_button 'Sign up'
       expect(User.count).to eq(0)

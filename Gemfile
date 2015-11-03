@@ -10,6 +10,7 @@ gem 'slackbotsy', '~> 0.4.2'
 gem 'sequel_secure_password', '~> 0.2.12'
 gem 'warden', '~> 1.2.3'
 gem 'rack_csrf', '~> 2.5.0'
+gem 'octokit', '~> 4.0'
 
 group :test do
   gem 'database_cleaner', '~> 1.4.1'
@@ -19,6 +20,7 @@ group :test do
   gem 'capybara', '~> 2.5.0'
   gem 'selenium-webdriver', '~> 2.47.1'
   gem 'capybara-webkit', '~> 1.7.1'
+  gem 'faker', '~> 1.5.0'
 end
 
 

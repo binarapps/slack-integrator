@@ -5,6 +5,7 @@ require 'factory_girl'
 require 'dotenv'
 require 'capybara/rspec'
 require 'capybara-webkit'
+require 'faker'
 
 ENV['RACK_ENV'] = 'test'
 
