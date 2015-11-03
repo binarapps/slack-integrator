@@ -8,6 +8,7 @@ class RegisterUser
     @email = params['email']
     @password = params['password']
     @password_confirmation = params['password_confirmation']
+    @github_login = params['github_login']
   end
 
   def call
@@ -15,7 +16,8 @@ class RegisterUser
     # authorize_specific_users if production?
     User.create(email: @email,
                 password: @password,
-                password_confirmation: @password_confirmation)
+                password_confirmation: @password_confirmation,
+                github_login: @github_login)
   end
 
   private
