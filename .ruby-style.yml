@@ -18,6 +18,7 @@ AllCops:
   Exclude:
   - "vendor/**/*"
   - "db/schema.rb"
+  - "views/**/*"
   RunRailsCops: false
   DisplayCopNames: false
   StyleGuideCopsOnly: false
