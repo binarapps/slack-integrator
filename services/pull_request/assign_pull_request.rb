@@ -10,7 +10,7 @@ module PullRequest
     end
 
     def call
-      @client = Octokit::Client.new(:access_token => ENV.fetch('GITHUB_TOKEN'))
+      @client = Octokit::Client.new(access_token: ENV.fetch('GITHUB_TOKEN'))
       assignee = PullRequest::DrawReviewer.call
       @assignee = assignee
 
@@ -23,6 +23,5 @@ module PullRequest
     def success_message
       "Pull request assigned to: #{@assignee}"
     end
-
   end
 end

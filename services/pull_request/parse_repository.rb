@@ -13,6 +13,5 @@ module PullRequest
       @repo_name = "#{@repo[0]}/#{@repo[1]}"
       @issue_number = @repo[3]
     end
-
   end
 end

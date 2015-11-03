@@ -1,5 +1,4 @@
 describe 'PullRequest::DrawReviewer' do
-
   context 'when there is a reviewer with smallest reviews count' do
     let!(:user) { FactoryGirl.create(:user, issues: 10) }
     let!(:another_user) { FactoryGirl.create(:user, issues: 11) }
@@ -8,7 +7,6 @@ describe 'PullRequest::DrawReviewer' do
     it 'should draw that person' do
       expect(PullRequest::DrawReviewer.call).to eq(yet_another_user.github_login)
     end
-
   end
 
   context 'when all users have the same amount of issues' do
@@ -20,5 +18,4 @@ describe 'PullRequest::DrawReviewer' do
       expect(PullRequest::DrawReviewer.call).to eq(user.github_login)
     end
   end
-
 end

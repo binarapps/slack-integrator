@@ -5,12 +5,12 @@ require 'open-uri'
 require 'set'
 require 'rack/csrf'
 
-Dir["./helpers/*.rb"].each {|file| require file }
+Dir['./helpers/*.rb'].each {|file| require file }
 require_relative 'models'
-Dir[File.join("./services", "**/*.rb")].each do |f|
+Dir[File.join('./services', '**/*.rb')].each do |f|
   require f
 end
-Dir["./configurations/*.rb"].each {|file| require file }
+Dir['./configurations/*.rb'].each {|file| require file }
 
 
 class RodaApp < Roda
@@ -68,17 +68,16 @@ class RodaApp < Roda
     end
 
     # /api
-    r.on "api" do
+    r.on 'api' do
       # /api/reservations
-      r.on "reservations" do
+      r.on 'reservations' do
         r.route 'reservation'
       end
 
       # /api/pull_requests
-      r.on "pull_requests" do
+      r.on 'pull_requests' do
         r.route 'pull_request'
       end
-
     end
   end
 end
