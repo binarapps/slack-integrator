@@ -78,6 +78,7 @@ class RodaApp < Roda
       # /api/pull_requests
       r.on 'pull_requests' do
         r.route 'pull_request'
+      end
       # /api/orders
       r.on 'orders' do
         r.route 'order'
