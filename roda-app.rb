@@ -17,7 +17,7 @@ class RodaApp < Roda
   # bots init
   opts[:reservation_bot] = Slackbotsy::Bot.new(ReservationSlackConfig::CONFIG)
   opts[:pull_request_bot] = Slackbotsy::Bot.new(PullRequestSlackConfig::CONFIG)
-
+  opts[:food_bot] = Slackbotsy::Bot.new(FoodSlackConfig::CONFIG)
   plugin :assets, css: ['signin.css', 'reservations.css']
   plugin :render, engine: 'haml'
   plugin :json, :classes=>[Sequel::Model, Array, Hash]
@@ -43,6 +43,8 @@ class RodaApp < Roda
     require_relative 'apps/user_registrations'
     require_relative 'apps/reservation'
     require_relative 'apps/pull_request'
+
+    require_relative 'apps/order'
 
     r.assets
 
@@ -73,10 +75,16 @@ class RodaApp < Roda
       r.on 'reservations' do
         r.route 'reservation'
       end
+<<<<<<< HEAD
 
       # /api/pull_requests
       r.on 'pull_requests' do
         r.route 'pull_request'
+=======
+      # /api/orders
+      r.on 'orders' do
+        r.route 'order'
+>>>>>>> master
       end
     end
   end

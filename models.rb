@@ -12,3 +12,6 @@ end
 
 require './models/reservation.rb'
 require './models/user.rb'
+require './models/place.rb'
+require './models/order.rb'
+require './models/order_list.rb'
