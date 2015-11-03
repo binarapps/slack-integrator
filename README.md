@@ -27,6 +27,7 @@ PULL_REQUEST_CHANNEL
 PULL_REQUEST_INCOMING_WEBHOOK
 PULL_REQUEST_OUTGOING_TOKEN
 GITHUB_TOKEN - token from some 'master' user on the github
+REPOSITORY_URL - example: `https://github.com/`
   ```
 3. gem install bundler
 4. bundle
