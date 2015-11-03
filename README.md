@@ -23,6 +23,10 @@ RESERVATION_INCOMING_WEBHOOK
 RESERVATION_CHANNEL
 RACK_ENV
 RESERVATION_OUTGOING_TOKEN
+PULL_REQUEST_CHANNEL
+PULL_REQUEST_INCOMING_WEBHOOK
+PULL_REQUEST_OUTGOING_TOKEN
+GITHUB_TOKEN - token from some 'master' user on the github
   ```
 3. gem install bundler
 4. bundle
@@ -32,9 +36,16 @@ RESERVATION_OUTGOING_TOKEN
 8. to run server: rackup
 
 ## Usage of the example reservation app
-After you filled in proper env variables you need and added integrations on your slack panel, you can invoke the command from you slack channel (I recommend slash commands).
+After you filled in proper env variables you need and added integrations on your slack panel, you can invoke the command from you slack channel (I used slash commands).
 
 Format of the text you type after slash command is: `DD/MM-HH-HH`
+
+## Usage of the pull request automatic assigment
+First of all you need to fill in proper `.env` variables and choose the channel you want to add integration to. On the slack side you need to setup `incoming webhook` and `slash commands` - as outgoing token.
+Also rememmber that you have to provide `GITHUB_TOKEN`. It is the alpha version of the integration, so it should be changed later to more generic way of authorization.
+Pull request will be assigned to each user that will register in the system.
+
+Usage of the integration: `/your_slash_command_from_slack <url_to_the_pull_request>`
 
 ## Development
 If you want to improve or add some integrations check issues or simply create one.
