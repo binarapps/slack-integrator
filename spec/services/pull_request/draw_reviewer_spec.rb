@@ -6,7 +6,7 @@ describe 'PullRequest::DrawReviewer' do
     let!(:yet_another_user) { FactoryGirl.create(:user, issues: 3) }
 
     it 'should draw that person' do
-      expect(PullRequest::DrawReviewer.call).to eq(yet_another_user)
+      expect(PullRequest::DrawReviewer.call).to eq(yet_another_user.github_login)
     end
 
   end
@@ -17,7 +17,7 @@ describe 'PullRequest::DrawReviewer' do
     let!(:yet_another_user) { FactoryGirl.create(:user) }
 
     it 'should draw first person from the top' do
-      expect(PullRequest::DrawReviewer.call).to eq(user)
+      expect(PullRequest::DrawReviewer.call).to eq(user.github_login)
     end
   end
 
