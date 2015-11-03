@@ -75,16 +75,12 @@ class RodaApp < Roda
       r.on 'reservations' do
         r.route 'reservation'
       end
-<<<<<<< HEAD
-
       # /api/pull_requests
       r.on 'pull_requests' do
         r.route 'pull_request'
-=======
       # /api/orders
       r.on 'orders' do
         r.route 'order'
->>>>>>> master
       end
     end
   end
