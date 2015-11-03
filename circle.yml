@@ -14,7 +14,7 @@ machine:
     FOOD_ORDER_OUTGOING_TOKEN: ''
     SECRET_TOKEN: 'secret'
     RACK_ENV: 'test'
-    REPOSITORY_URL: ''
+    REPOSITORY_URL: 'https://github.com/'
 test:
   pre:
     - bundle exec rake db:drop
