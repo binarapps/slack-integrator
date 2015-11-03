@@ -7,7 +7,7 @@ module PullRequest
     end
 
     def call
-      @repo.slice!('https://github.com/')
+      @repo.slice!(ENV.fetch('REPOSITORY_URL'))
       # example ["example_company", "example_project", "pull", "99"]
       @repo = @repo.split('/')
       @repo_name = "#{@repo[0]}/#{@repo[1]}"
