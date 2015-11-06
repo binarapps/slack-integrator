@@ -1,4 +1,4 @@
-require "sequel"
+require 'sequel'
 
 class Reservation < Sequel::Model
 

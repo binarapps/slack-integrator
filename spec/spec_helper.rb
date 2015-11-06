@@ -6,6 +6,7 @@ require 'dotenv'
 require 'capybara/rspec'
 require 'capybara-webkit'
 require_relative '../spec/support/session_helper'
+require 'faker'
 
 ENV['RACK_ENV'] = 'test'
 

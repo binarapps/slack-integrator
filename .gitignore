@@ -1,5 +1,6 @@
 *.gem
 *.rbc
+places.yml
 /.config
 /coverage/
 /InstalledFiles
@@ -8,7 +9,6 @@
 /test/tmp/
 /test/version_tmp/
 /tmp/
-/places.yml
 ## Specific to RubyMotion:
 .dat*
 .repl_history
