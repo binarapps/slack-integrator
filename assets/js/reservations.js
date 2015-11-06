@@ -1,5 +1,5 @@
 window.viewFunctions = window.viewFunctions || {};
-viewFunctions.ajax_reservation = function(csrf_token, request_url) {
+viewFunctions.ajax_reservation = function(csrfToken, requestUrl) {
   $('.submit-reservation').click( function(e) {
     e.preventDefault();
     $('.errors').html('');
@@ -9,20 +9,20 @@ viewFunctions.ajax_reservation = function(csrf_token, request_url) {
     var to = $('.to').val();
 
     $.ajax({
-      url: request_url,
+      url: requestUrl,
       type: 'POST',
       dataType: 'json',
       data: {
         text: date[2]+'/'+date[1]+'-'+ from +'-'+ to,
-        '_csrf': csrf_token
+        '_csrf': csrfToken
        },
       error: function(data){
-        $('.errors').append(data['responseText']);
+        $('.errors').append(data.responseText);
       },
       success: function(data) {
-        $('.success').append(data['responseText']);
+        $('.success').append(data.responseText);
         window.location.reload();
       }
     });
   });
-}
+};

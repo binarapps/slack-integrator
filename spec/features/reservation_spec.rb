@@ -1,7 +1,6 @@
 require 'spec_helper'
 
-describe "reservation actions", :type => :feature, :js => true do
-
+describe "reservation actions", type: :feature, js: true do
   let(:user) { FactoryGirl.create(:user) }
 
   before(:each) do

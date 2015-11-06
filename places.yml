@@ -1,0 +1,15 @@
+manana:
+  full_name: 'Mañana Tex-Mex Bar'
+  phone: '726 626 262'
+  schema: 'co/sos/picie'
+  menu: 'https://www.facebook.com/mananalodz?fref=ts'
+pasta:
+  full_name: 'PastaGo'
+  phone: '534 010 410'
+  schema: 'co/rozmiar/marakon'
+  menu: 'https://www.facebook.com/pastagoo/app_117784394919914'
+zdrowy:
+  full_name: 'Zdrowy Obiad'
+  phone: '502 202 264'
+  schema: 'co'
+  menu: 'http://www.zdrowyobiad.pl/menu/'
