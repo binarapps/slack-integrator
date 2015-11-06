@@ -5,6 +5,7 @@ require 'factory_girl'
 require 'dotenv'
 require 'capybara/rspec'
 require 'capybara-webkit'
+require_relative '../spec/support/session_helper'
 require 'faker'
 
 ENV['RACK_ENV'] = 'test'
@@ -36,6 +37,7 @@ Capybara.current_driver = :webkit
 
 Capybara::Webkit.configure do |config|
   config.block_unknown_urls
+  config.debug = true
 end
 
 FactoryGirl.definition_file_paths = %w{./factories ./spec/factories}

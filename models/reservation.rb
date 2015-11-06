@@ -25,7 +25,6 @@ class Reservation < Sequel::Model
 
   def date_already_reserved?
     reservations = Reservation.where(reserved_at: reserved_at)
-
     return false if reservations.empty?
     reservations.each do |reservation|
       @existing_range = reservation.from..reservation.to

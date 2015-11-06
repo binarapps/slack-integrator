@@ -1,3 +1,14 @@
+%div
+  %button.btn.btn-lng.btn-primary.reserve Create new reservation
+
+  %form.reservation-form{ action: '/api/reservations', method: 'POST' }
+    = Rack::Csrf.tag(env)
+    %input.form-control.reserved-at{ :name => "reserved_at", :required => "", type: 'date', value: @day }/
+    %input.form-control.from{ :autofocus => "true", :name => "from", :placeholder => "from", :required => "", :type => "text" }/
+    %input.form-control.to{ :name => "to", :placeholder => "to", :required => "", :type => "text" }/
+    %button.btn.btn-lng.btn-primary.btn-block.submit-reservation{ type: "Submit" } Save
+.errors{ style: 'color: red;' }
+.success{ style: 'color: green;' }
 = "Number of reservations at #{@day}: #{@reservations.count}"
 
 %table.table.table-striped
@@ -10,8 +21,17 @@
       %td= reservation.to
 
 .reservations-paginate
-  %a{ href: "http://localhost:9292?day=#{@day - 1}" }
+  %a{ href: "#{request.base_url}?day=#{@day - 1}" }
     <- Previous
 
-  %a{ href: "http://localhost:9292?day=#{@day + 1}" }
+  %a{ href: "#{request.base_url}?day=#{@day + 1}" }
     Next ->
+
+
+:javascript
+  $( document ).ready(function() {
+    $('.reserve').click( function(){
+      $('.reservation-form').toggle();
+    });
+    viewFunctions.ajax_reservation($("[name='_csrf']").val(), "#{request.base_url}/api/reservations");
+  });
