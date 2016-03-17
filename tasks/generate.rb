@@ -11,9 +11,9 @@ namespace :generate do
     content = "Sequel.migration do\n  up do\n    \n  end\n\n  down do\n    \n  end\nend\n"
     timestamp = DateTime.now.strftime('%Y%m%d%H%M%S')
     filename = File.join(
-        File.dirname(File.dirname(File.expand_path(__FILE__))),
-        'migrations',
-        "#{timestamp}_#{migration_name}.rb")
+      File.dirname(File.dirname(File.expand_path(__FILE__))), 
+      'migrations',
+      "#{timestamp}_#{migration_name}.rb")
 
     File.open(filename, 'w') do |f|
       f.puts content
@@ -22,3 +22,4 @@ namespace :generate do
     puts "Created the migration #{filename}"
   end
 end
+
