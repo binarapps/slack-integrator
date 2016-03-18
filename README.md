@@ -79,6 +79,12 @@ Application structure has been prepared to easly add new integrations.
 `rake db:migrate RACK_ENV=test`
 `rspec spec`
 
+## Migrations
+
+migrations are generated using a rake task. To generate your migration invoke
+`rake generate:migration['Create events']`
+under some shells like zsh you need to escape `[`, call it like this 
+`rake generate:migration\['Hehe Axzsdasdasd'\]`
 ## License
 
 MIT
